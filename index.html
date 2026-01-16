@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diplomado en Ciencia de Datos | Formación Profesional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --dark: #0f172a;
+            --dark-light: #f8fafc;
+            --dark-card: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --bg-main: #ffffff;
+            --bg-secondary: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #1e293b 0%, var(--primary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-date {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: rgba(99, 102, 241, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .modules {
+            padding: 3rem 0;
+        }
+
+        .module-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease-out backwards;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+        }
+
+        .module-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .module-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .module-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .module-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .module-number {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .module-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+
+        .module-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .meta-icon {
+            font-size: 1.25rem;
+        }
+
+        .section-heading {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 2rem 0 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .purpose-text {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(6, 182, 212, 0.08);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+        }
+
+        .topic-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+            transform: translateX(8px);
+        }
+
+        .topic-item::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--success), var(--accent));
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .learning-outcomes {
+            margin-top: 2rem;
+        }
+
+        .outcome-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: rgba(139, 92, 246, 0.05);
+            border-left: 4px solid var(--secondary);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .outcome-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .outcome-text strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .footer {
+            margin-top: 4rem;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .docente-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section p {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .detail-link:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateX(5px);
+        }
+
+        .module-details {
+            margin-top: 2rem;
+        }
+
+        .details-toggle {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            color: var(--dark);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .details-toggle:hover {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+
+        .toggle-icon {
+            font-size: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .details-toggle.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .details-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .details-content.show {
+            max-height: 5000px;
+            transition: max-height 0.6s ease-in;
+        }
+
+        .details-inner {
+            padding: 2rem 0 0;
+        }
+
+        .detail-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(6, 182, 212, 0.03);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+        }
+
+        .detail-section h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .detail-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .detail-section ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .detail-section ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .detail-highlight {
+            display: inline-block;
+            padding: 0.75rem 1.25rem;
+            background: rgba(139, 92, 246, 0.15);
+            border-left: 3px solid var(--secondary);
+            border-radius: 6px;
+            margin: 1rem 0;
+            font-style: italic;
+            color: var(--text);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .module-card {
+                padding: 2rem;
+            }
+
+            .module-title {
+                font-size: 1.5rem;
+            }
+
+            .topic-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Docentes */
+        .docentes-section {
+            padding: 4rem 0;
+            margin-top: 2rem
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            margin-bottom: 3rem
+        }
+
+        .docentes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto
+        }
+
+        .docente-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1)
+        }
+
+        .docente-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3)
+        }
+
+        .docente-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--primary);
+            object-fit: cover;
+            background: var(--dark-light)
+        }
+
+        .docente-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem
+        }
+
+        .docente-title {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem
+        }
+
+        .docente-bio {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            text-align: left;
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: rgba(6, 182, 212, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px
+        }
+
+        .docente-role {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: var(--text)
+        }
+
+        /* Logos */
+        .logos-section {
+            padding: 3rem 0 2rem;
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0
+        }
+
+        .logos-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding: 2rem
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            transition: all 0.3s ease
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05)
+        }
+
+        @media (max-width: 768px) {
+            .logos-grid {
+                gap: 2rem
+            }
+
+            .logo-img {
+                height: 60px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="hero">
+            <div class="hero-badge">Formación Profesional</div>
+            <h1>Diplomado en Ciencia de Datos</h1>
+            <p class="hero-subtitle">Desarrolla competencias técnicas y estratégicas para transformar datos en
+                decisiones de impacto organizacional</p>
+            <div class="hero-date">📅 Propuesta: 16 de enero de 2026</div>
+        </header>
+
+        <main class="modules">
+            <!-- Módulo 1 -->
+            <article class="module-card">
+                <div class="module-header">
+                    <div class="module-number">01</div>
+                    <h2 class="module-title">Ciencia de Datos y Contexto Organizacional</h2>
+                </div>
+                <div class="module-meta">
+                    <div class="meta-item"><span class="meta-icon">⏱️</span><span>30 horas</span></div>
+                    <div class="meta-item"><span class="meta-icon">📚</span><span>10 temáticas</span></div>
+                </div>
+                <h3 class="section-heading">Propósito del Módulo</h3>
+                <p class="purpose-text">Alinear la ciencia de datos con la estrategia organizacional, entendiendo el
+                    negocio, los datos disponibles y las capacidades analíticas necesarias para generar valor. Este
+                    módulo sienta las bases conceptuales y estratégicas del diplomado.</p>
+                <h3 class="section-heading">Temáticas</h3>
+                <div class="topic-list">
+                    <div class="topic-item">Ciencia de datos en las organizaciones</div>
+                    <div class="topic-item">Ciclo de vida de la ciencia de datos</div>
+                    <div class="topic-item">Modelo CRISP-DM y entendimiento del negocio</div>
+                    <div class="topic-item">Entendimiento de los datos</div>
+                    <div class="topic-item">Gobernanza de datos y roles organizacionales</div>
+                    <div class="topic-item">Activos de información</div>
+                    <div class="topic-item">Métodos de recolección de datos</div>
+                    <div class="topic-item">Diseño de encuestas</div>
+                    <div class="topic-item">Uso de inteligencia artificial en el diseño de encuestas</div>
+                    <div class="topic-item">Capacidades analíticas y tipos de análisis</div>
+                </div>
+                <a href="https://www.notion.so/Modulo-1-detalle-2e903810520f80499a9cfeae16073607?pvs=21" target="_blank"
+                    class="detail-link">
+                    📄 Ver detalles completos del módulo <span>→</span>
+                </a>
+                <div class="learning-outcomes">
+                    <h3 class="section-heading">Resultados de Aprendizaje</h3>
+                    <div class="outcome-item">
+                        <span class="outcome-icon">🎯</span>
+                        <p class="outcome-text"><strong>Analiza</strong> el rol de la ciencia de datos dentro de una
+                            organización, comprendiendo su ciclo de vida, la importancia del entendimiento del negocio y
+                            la gobernanza de los datos.</p>
+                    </div>
+                    <div class="outcome-item">
+                        <span class="outcome-icon">🎯</span>
+                        <p class="outcome-text"><strong>Identifica y estructura</strong> activos de información y
+                            métodos de recolección de datos, diseñando encuestas alineadas a necesidades
+                            organizacionales con apoyo de inteligencia artificial.</p>
+                    </div>
+                </div>
+
+                <!-- Detalle Extendido del Módulo 1 -->
+                <div class="module-details">
+                    <button class="details-toggle" onclick="toggleDetails('module1-details', this)">
+                        <span>📖 Ver contenido detallado del módulo</span>
+                        <span class="toggle-icon">▼</span>
+                    </button>
+                    <div id="module1-details" class="details-content">
+                        <div class="details-inner">
+                            <div class="detail-section">
+                                <h4>1. Ciencia de Datos en las organizaciones</h4>
+                                <ul>
+                                    <li>Qué es ciencia de datos y qué <strong>no</strong> es ciencia de datos.</li>
+                                    <li>Diferencia entre analítica tradicional, business intelligence y ciencia de
+                                        datos.</li>
+                                    <li>La ciencia de datos como capacidad organizacional, no como herramienta.</li>
+                                    <li>Casos de uso típicos en organizaciones públicas y privadas.</li>
+                                </ul>
+                                <div class="detail-highlight"><strong>Enfoque clave:</strong> la ciencia de datos como
+                                    habilitador estratégico.</div>
+                            </div>
+                            <div class="detail-section">
+                                <h4>2. Ciclo de vida de la ciencia de datos</h4>
+                                <ul>
+                                    <li>Visión general del ciclo de vida de un proyecto de ciencia de datos.</li>
+                                    <li>Iteratividad, retroalimentación y mejora continua.</li>
+                                    <li>Riesgos comunes cuando se omiten etapas del ciclo.</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>3. Modelo CRISP-DM aplicado al contexto organizacional</h4>
+                                <ul>
+                                    <li>Introducción al modelo CRISP-DM.</li>
+                                    <li><strong>Entendimiento del negocio</strong> como fase crítica:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Definición del problema real vs. el problema percibido.</li>
+                                            <li>Traducción de necesidades del negocio a preguntas analíticas.</li>
+                                            <li>Indicadores, restricciones y criterios de éxito.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Entendimiento de los datos</strong>:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Qué datos existen y cuáles hacen falta.</li>
+                                            <li>Calidad, disponibilidad y pertinencia de los datos.</li>
+                                            <li>Riesgos de trabajar con datos no comprendidos.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="detail-highlight"><strong>Mensaje estratégico:</strong> sin claridad del
+                                    negocio, cualquier modelo es irrelevante.</div>
+                            </div>
+                            <div class="detail-section">
+                                <h4>4. Gobernanza de datos y roles organizacionales</h4>
+                                <ul>
+                                    <li>Qué es gobernanza de datos y por qué es crítica.</li>
+                                    <li>Principios básicos de gobernanza:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Calidad</li>
+                                            <li>Seguridad</li>
+                                            <li>Accesibilidad</li>
+                                            <li>Responsabilidad</li>
+                                        </ul>
+                                    </li>
+                                    <li>Roles clave:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Data Owner</li>
+                                            <li>Data Steward</li>
+                                            <li>Data Analyst</li>
+                                            <li>Data Scientist</li>
+                                            <li>Usuarios del dato</li>
+                                        </ul>
+                                    </li>
+                                    <li>Relación entre gobernanza, cumplimiento normativo y toma de decisiones.</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>5. Activos de información</h4>
+                                <ul>
+                                    <li>Concepto de activos de información.</li>
+                                    <li>Tipos de activos:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Bases de datos</li>
+                                            <li>Formularios</li>
+                                            <li>Reportes</li>
+                                            <li>Sistemas transaccionales</li>
+                                        </ul>
+                                    </li>
+                                    <li>Lineamientos para la correcta identificación de activos:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Propósito</li>
+                                            <li>Responsable</li>
+                                            <li>Origen</li>
+                                            <li>Frecuencia de actualización</li>
+                                        </ul>
+                                    </li>
+                                    <li>Importancia de la trazabilidad de los datos dentro de la organización.</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>6. Métodos de recolección de datos</h4>
+                                <ul>
+                                    <li>Fuentes de datos internas y externas.</li>
+                                    <li>Métodos comunes de recolección:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Encuestas</li>
+                                            <li>Registros administrativos</li>
+                                            <li>Sensores</li>
+                                            <li>Logs de sistemas</li>
+                                        </ul>
+                                    </li>
+                                    <li>Ventajas y limitaciones de cada método.</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>7. Diseño de encuestas como instrumento de recolección</h4>
+                                <ul>
+                                    <li>Cuándo una encuesta es adecuada y cuándo no.</li>
+                                    <li>Tipos de preguntas:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Abiertas</li>
+                                            <li>Cerradas</li>
+                                            <li>Escalas</li>
+                                        </ul>
+                                    </li>
+                                    <li>Errores comunes en el diseño de encuestas.</li>
+                                    <li>Sesgos y calidad de la información recolectada.</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>8. Apoyo de la inteligencia artificial en el diseño de encuestas</h4>
+                                <ul>
+                                    <li>Uso de IA para:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Definición de objetivos de la encuesta.</li>
+                                            <li>Generación de preguntas alineadas al problema.</li>
+                                            <li>Validación semántica y coherencia.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Automatización de encuestas:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Creación de formularios con Google Forms.</li>
+                                            <li>Introducción a AppScript para la generación automatizada de formularios.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>Enfoque demostrativo, no técnico profundo.</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>9. Capacidades analíticas para la explotación de datos</h4>
+                                <ul>
+                                    <li>Qué significa "explotar" los datos en un contexto organizacional.</li>
+                                    <li>Tipos de análisis:
+                                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                            <li>Análisis descriptivo</li>
+                                            <li>Análisis diagnóstico</li>
+                                            <li>Análisis predictivo</li>
+                                            <li>Análisis prescriptivo</li>
+                                        </ul>
+                                    </li>
+                                    <li>Relación entre tipo de análisis y nivel de madurez organizacional.</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>10. Toma de decisiones basada en datos</h4>
+                                <ul>
+                                    <li>Diferencia entre datos, información y conocimiento.</li>
+                                    <li>Uso de resultados analíticos en la toma de decisiones.</li>
+                                    <li>Limitaciones del análisis si no hay contexto organizacional.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Módulo 2 -->
+            <article class="module-card">
+                <div class="module-header">
+                    <div class="module-number">02</div>
+                    <h2 class="module-title">Preparación, Arquitectura y Gestión de Datos</h2>
+                </div>
+                <div class="module-meta">
+                    <div class="meta-item"><span class="meta-icon">⏱️</span><span>30 horas</span></div>
+                    <div class="meta-item"><span class="meta-icon">📚</span><span>11 temáticas</span></div>
+                </div>
+                <h3 class="section-heading">Objetivo Académico</h3>
+                <p class="purpose-text">Desarrollar competencias técnicas y conceptuales para estructurar, limpiar,
+                    transformar y organizar datos de forma sistemática, comprendiendo las arquitecturas modernas de
+                    datos y aplicando fundamentos sólidos de Python.</p>
+                <h3 class="section-heading">Temáticas</h3>
+                <div class="topic-list">
+                    <div class="topic-item">Introducción al proceso ETL</div>
+                    <div class="topic-item">Extracción de datos desde múltiples fuentes</div>
+                    <div class="topic-item">Transformación y validación de datos</div>
+                    <div class="topic-item">Carga de datos y persistencia</div>
+                    <div class="topic-item">Data Warehouse</div>
+                    <div class="topic-item">Data Lake</div>
+                    <div class="topic-item">Evolución hacia el Data Lakehouse</div>
+                    <div class="topic-item">Fundamentos de Python para ciencia de datos</div>
+                    <div class="topic-item">Estructuras de datos en Python</div>
+                    <div class="topic-item">Librerías principales para análisis</div>
+                    <div class="topic-item">Limpieza, organización y transformación de datos en Python</div>
+                </div>
+                <a href="https://www.notion.so/Modulo-2-detalle-2ea03810520f80fc9043f0defbcde827?pvs=21" target="_blank"
+                    class="detail-link">
+                    📄 Ver detalles completos del módulo <span>→</span>
+                </a>
+                <div class="learning-outcomes">
+                    <h3 class="section-heading">Resultados de Aprendizaje</h3>
+                    <div class="outcome-item">
+                        <span class="outcome-icon">🎯</span>
+                        <p class="outcome-text"><strong>Interpreta</strong> arquitecturas de datos modernas y procesos
+                            ETL para estructurar flujos de datos coherentes dentro de un contexto organizacional.</p>
+                    </div>
+                    <div class="outcome-item">
+                        <span class="outcome-icon">🎯</span>
+                        <p class="outcome-text"><strong>Aplica</strong> fundamentos de Python y librerías analíticas
+                            para limpiar, transformar y organizar datos de manera eficiente y reproducible.</p>
+                    </div>
+                </div>
+
+                <!-- Detalle Extendido del Módulo 2 -->
+                <div class="module-details">
+                    <button class="details-toggle" onclick="toggleDetails('module2-details', this)">
+                        <span>📖 Ver contenido detallado del módulo</span>
+                        <span class="toggle-icon">▼</span>
+                    </button>
+                    <div id="module2-details" class="details-content">
+                        <div class="details-inner">
+                            <div class="detail-section">
+                                <h4>1. Introducción al proceso ETL (Extract, Transform, Load)</h4>
+                                <ul>
+                                    <li>Rol del ETL dentro del ciclo de vida de la ciencia de datos</li>
+                                    <li>Diferencia entre ETL tradicional y ELT</li>
+                                    <li>Casos de uso organizacionales</li>
+                                    <li>Relación entre ETL, analítica y toma de decisiones</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>2. Extracción de datos</h4>
+                                <ul>
+                                    <li>Fuentes de datos estructuradas y no estructuradas</li>
+                                    <li>Bases de datos, archivos planos, APIs y formularios</li>
+                                    <li>Consideraciones de calidad y trazabilidad desde la extracción</li>
+                                    <li>Automatización básica de procesos de extracción</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>3. Transformación de datos</h4>
+                                <ul>
+                                    <li>Normalización y estandarización</li>
+                                    <li>Tratamiento de valores faltantes</li>
+                                    <li>Manejo de duplicados e inconsistencias</li>
+                                    <li>Reglas de negocio aplicadas a los datos</li>
+                                    <li>Validación y control de calidad</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>4. Carga de datos y persistencia</h4>
+                                <ul>
+                                    <li>Carga en sistemas analíticos</li>
+                                    <li>Versionamiento de datos</li>
+                                    <li>Integridad y consistencia</li>
+                                    <li>Buenas prácticas de almacenamiento</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>5. Arquitecturas de datos: Data Warehouse</h4>
+                                <ul>
+                                    <li>Concepto y propósito</li>
+                                    <li>Modelos dimensionales</li>
+                                    <li>Casos de uso tradicionales</li>
+                                    <li>Ventajas y limitaciones</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>6. Arquitecturas de datos: Data Lake</h4>
+                                <ul>
+                                    <li>Almacenamiento de datos en bruto</li>
+                                    <li>Tipos de datos soportados</li>
+                                    <li>Gobernanza y control en Data Lakes</li>
+                                    <li>Riesgos del "data swamp"</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>7. Evolución hacia el Data Lakehouse</h4>
+                                <ul>
+                                    <li>Motivación del modelo híbrido</li>
+                                    <li>Beneficios frente a Warehouse y Lake</li>
+                                    <li>Casos de uso modernos en ciencia de datos</li>
+                                    <li>Impacto en analítica avanzada y machine learning</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>8. Fundamentos de Python para ciencia de datos</h4>
+                                <ul>
+                                    <li>Rol de Python en el ecosistema analítico</li>
+                                    <li>Entorno de trabajo y buenas prácticas</li>
+                                    <li>Tipos de datos básicos</li>
+                                    <li>Estructuras de control</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>9. Estructuras de datos en Python</h4>
+                                <ul>
+                                    <li>Listas, diccionarios, tuplas y conjuntos</li>
+                                    <li>Uso eficiente según el contexto analítico</li>
+                                    <li>Transformación y manipulación de estructuras</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>10. Librerías principales para análisis de datos</h4>
+                                <ul>
+                                    <li>NumPy: operaciones numéricas</li>
+                                    <li>Pandas: manipulación y limpieza de datos</li>
+                                    <li>Conceptos de DataFrame y Series</li>
+                                    <li>Flujo de trabajo analítico en Python</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>11. Limpieza, organización y transformación de datos en Python</h4>
+                                <ul>
+                                    <li>Lectura y escritura de datos</li>
+                                    <li>Tratamiento de valores nulos</li>
+                                    <li>Transformaciones columnarias</li>
+                                    <li>Filtrado, agregaciones y joins</li>
+                                    <li>Preparación del dataset para análisis y modelado</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Módulo 3 -->
+            <article class="module-card">
+                <div class="module-header">
+                    <div class="module-number">03</div>
+                    <h2 class="module-title">Análisis Exploratorio y Visualización de Datos</h2>
+                </div>
+                <div class="module-meta">
+                    <div class="meta-item"><span class="meta-icon">⏱️</span><span>30 horas</span></div>
+                    <div class="meta-item"><span class="meta-icon">📚</span><span>11 temáticas</span></div>
+                </div>
+                <h3 class="section-heading">Objetivo Académico</h3>
+                <p class="purpose-text">Desarrollar la capacidad analítica para explorar, comprender e interpretar
+                    conjuntos de datos mediante técnicas de estadística descriptiva, análisis exploratorio, detección de
+                    patrones y visualización.</p>
+                <h3 class="section-heading">Temáticas</h3>
+                <div class="topic-list">
+                    <div class="topic-item">Análisis Exploratorio de Datos (EDA)</div>
+                    <div class="topic-item">Estadística descriptiva aplicada</div>
+                    <div class="topic-item">Análisis univariado</div>
+                    <div class="topic-item">Análisis bivariado y multivariado</div>
+                    <div class="topic-item">Correlaciones entre variables</div>
+                    <div class="topic-item">Visualización de datos exploratoria</div>
+                    <div class="topic-item">Introducción al análisis de hipótesis</div>
+                    <div class="topic-item">Reducción de dimensionalidad (PCA)</div>
+                    <div class="topic-item">EDA con Python</div>
+                    <div class="topic-item">Visualización y KPIs en Power BI</div>
+                    <div class="topic-item">EDA para la toma de decisiones</div>
+                </div>
+                <a href="https://www.notion.so/Modulo-3-detalle-2ea03810520f80d89c8de8887a31db12?pvs=21" target="_blank"
+                    class="detail-link">
+                    📄 Ver detalles completos del módulo <span>→</span>
+                </a>
+                <div class="learning-outcomes">
+                    <h3 class="section-heading">Resultados de Aprendizaje</h3>
+                    <div class="outcome-item">
+                        <span class="outcome-icon">🎯</span>
+                        <p class="outcome-text"><strong>Interpreta</strong> patrones, tendencias y relaciones en
+                            conjuntos de datos mediante técnicas de análisis exploratorio y estadística descriptiva.</p>
+                    </div>
+                    <div class="outcome-item">
+                        <span class="outcome-icon">🎯</span>
+                        <p class="outcome-text"><strong>Analiza</strong> información organizacional utilizando
+                            visualización de datos en Python y herramientas de inteligencia de negocios como Power BI.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Detalle Extendido del Módulo 3 -->
+                <div class="module-details">
+                    <button class="details-toggle" onclick="toggleDetails('module3-details', this)">
+                        <span>📖 Ver contenido detallado del módulo</span>
+                        <span class="toggle-icon">▼</span>
+                    </button>
+                    <div id="module3-details" class="details-content">
+                        <div class="details-inner">
+                            <div class="detail-section">
+                                <h4>1. Introducción al Análisis Exploratorio de Datos (EDA)</h4>
+                                <p>Rol del EDA dentro del ciclo de vida de la ciencia de datos. Diferencia entre
+                                    análisis exploratorio y análisis confirmatorio. Relación entre EDA, entendimiento
+                                    del negocio y formulación de hipótesis.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>2. Estadística descriptiva aplicada</h4>
+                                <p>Medidas de tendencia central, dispersión y forma. Interpretación práctica en
+                                    contextos económicos y organizacionales. Uso de estadística como herramienta de
+                                    diagnóstico, no como fin matemático.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>3. Distribuciones y análisis univariado</h4>
+                                <p>Histogramas, densidades, diagramas de caja. Identificación de outliers, sesgos,
+                                    curtosis y su impacto en decisiones analíticas posteriores.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>4. Análisis bivariado y multivariado</h4>
+                                <p>Relación entre variables cuantitativas y cualitativas. Tablas cruzadas, comparaciones
+                                    de grupos, análisis de dependencias preliminares.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>5. Correlaciones y relaciones entre variables</h4>
+                                <p>Correlación lineal y no lineal. Interpretación correcta de coeficientes de
+                                    correlación. Riesgos comunes: causalidad espuria, multicolinealidad y correlaciones
+                                    inducidas por el contexto.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>6. Visualización de datos para exploración</h4>
+                                <p>Principios de visualización efectiva. Gráficos como herramienta analítica, no solo
+                                    comunicativa. Selección adecuada del tipo de gráfico según el objetivo analítico.
+                                </p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>7. Introducción al análisis de hipótesis</h4>
+                                <p>Conceptos básicos de pruebas de hipótesis aplicadas al EDA. Comparación de grupos,
+                                    significancia estadística como apoyo exploratorio, no como validación final de
+                                    modelos.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>8. Reducción de dimensionalidad y detección de patrones</h4>
+                                <p>Introducción conceptual al Análisis de Componentes Principales (PCA). Uso de PCA como
+                                    herramienta exploratoria para identificar estructuras latentes, correlaciones
+                                    ocultas y simplificación del espacio de variables.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>9. EDA con Python</h4>
+                                <p>Aplicación práctica usando librerías como pandas, numpy, matplotlib y seaborn.
+                                    Exploración guiada de datasets económicos u organizacionales. Uso del notebook como
+                                    herramienta de trabajo analítico reproducible.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>10. Visualización y análisis descriptivo con Power BI</h4>
+                                <p>Introducción a Power BI como herramienta corporativa. Modelado básico de datos,
+                                    construcción de visualizaciones, indicadores y KPIs. Diferencias entre análisis
+                                    exploratorio en Python y análisis descriptivo orientado a negocio en herramientas
+                                    BI.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>11. Integración EDA – toma de decisiones</h4>
+                                <p>Cómo traducir hallazgos exploratorios en insights accionables. Limitaciones del EDA.
+                                    Preparación del terreno para modelos predictivos y analíticos avanzados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Módulo 4 -->
+            <article class="module-card">
+                <div class="module-header">
+                    <div class="module-number">04</div>
+                    <h2 class="module-title">Modelado Analítico, Machine Learning y Deep Learning</h2>
+                </div>
+                <div class="module-meta">
+                    <div class="meta-item"><span class="meta-icon">⏱️</span><span>30 horas</span></div>
+                    <div class="meta-item"><span class="meta-icon">📚</span><span>12 temáticas</span></div>
+                </div>
+                <h3 class="section-heading">Objetivo Académico</h3>
+                <p class="purpose-text">Desarrollar competencias para la construcción, evaluación e interpretación de
+                    modelos analíticos y de aprendizaje automático, comprendiendo los enfoques supervisados, no
+                    supervisados y los fundamentos del aprendizaje profundo.</p>
+                <h3 class="section-heading">Temáticas</h3>
+                <div class="topic-list">
+                    <div class="topic-item">Introducción al modelado en ciencia de datos</div>
+                    <div class="topic-item">Aprendizaje supervisado</div>
+                    <div class="topic-item">Modelos supervisados clásicos</div>
+                    <div class="topic-item">Aprendizaje no supervisado</div>
+                    <div class="topic-item">Modelos de clustering</div>
+                    <div class="topic-item">Preparación de datos para modelado</div>
+                    <div class="topic-item">Entrenamiento, validación y prueba</div>
+                    <div class="topic-item">Métricas de evaluación</div>
+                    <div class="topic-item">Introducción a redes neuronales</div>
+                    <div class="topic-item">Fundamentos de Deep Learning</div>
+                    <div class="topic-item">Implementación de modelos con Python</div>
+                    <div class="topic-item">Interpretabilidad y uso responsable de modelos</div>
+                </div>
+                <a href="https://www.notion.so/Modulo-4-detalle-2ea03810520f80ac9e0ee80e29983798?pvs=21" target="_blank"
+                    class="detail-link">
+                    📄 Ver detalles completos del módulo <span>→</span>
+                </a>
+                <div class="learning-outcomes">
+                    <h3 class="section-heading">Resultados de Aprendizaje</h3>
+                    <div class="outcome-item">
+                        <span class="outcome-icon">🎯</span>
+                        <p class="outcome-text"><strong>Comprende</strong> los enfoques supervisados, no supervisados y
+                            los fundamentos del aprendizaje profundo dentro del ciclo de vida de la ciencia de datos.
+                        </p>
+                    </div>
+                    <div class="outcome-item">
+                        <span class="outcome-icon">🎯</span>
+                        <p class="outcome-text"><strong>Aplica</strong> modelos analíticos básicos, evaluando su
+                            desempeño e interpretando sus resultados en contextos organizacionales.</p>
+                    </div>
+                </div>
+
+                <!-- Detalle Extendido del Módulo 4 -->
+                <div class="module-details">
+                    <button class="details-toggle" onclick="toggleDetails('module4-details', this)">
+                        <span>📖 Ver contenido detallado del módulo</span>
+                        <span class="toggle-icon">▼</span>
+                    </button>
+                    <div id="module4-details" class="details-content">
+                        <div class="details-inner">
+                            <div class="detail-section">
+                                <h4>1. Introducción al modelado en ciencia de datos</h4>
+                                <p>Rol del modelado dentro del ciclo de vida analítico. Diferencia entre análisis
+                                    descriptivo, predictivo y prescriptivo. Cuándo modelar y cuándo no modelar.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>2. Aprendizaje supervisado</h4>
+                                <p>Concepto, lógica y casos de uso. Problemas de regresión y clasificación. Relación
+                                    entre variable objetivo, variables explicativas y supuestos del modelo.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>3. Modelos supervisados clásicos</h4>
+                                <p>Regresión lineal y logística, árboles de decisión, k-Nearest Neighbors. Ventajas,
+                                    limitaciones y criterios de selección según el problema organizacional.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>4. Aprendizaje no supervisado</h4>
+                                <p>Concepto y aplicaciones. Clustering como herramienta de segmentación y descubrimiento
+                                    de estructuras internas en los datos.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>5. Modelos no supervisados</h4>
+                                <p>K-means, clustering jerárquico y nociones de reducción de dimensionalidad aplicada al
+                                    modelado. Interpretación de resultados y validación conceptual.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>6. Preparación de datos para modelado</h4>
+                                <p>Escalamiento, normalización, selección de variables y manejo de desbalanceo. Impacto
+                                    directo de la preparación en el desempeño del modelo.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>7. Entrenamiento, validación y prueba de modelos</h4>
+                                <p>División de datos. Overfitting y underfitting. Validación cruzada como mecanismo de
+                                    control de generalización.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>8. Métricas de evaluación de modelos</h4>
+                                <p>Métricas para regresión y clasificación. Interpretación de resultados desde una
+                                    perspectiva de negocio, no solo estadística.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>9. Introducción a redes neuronales</h4>
+                                <p>Conceptos fundamentales: perceptrón, capas, pesos, funciones de activación.
+                                    Diferencia entre modelos tradicionales y redes neuronales.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>10. Fundamentos de Deep Learning</h4>
+                                <p>Arquitectura básica de redes profundas. Casos de uso típicos. Limitaciones prácticas,
+                                    costos computacionales y riesgos de mala implementación.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>11. Implementación práctica con Python</h4>
+                                <p>Construcción de modelos básicos usando librerías de machine learning y deep learning.
+                                    Flujo completo: datos → modelo → evaluación → interpretación.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>12. Interpretabilidad y uso responsable de modelos</h4>
+                                <p>Importancia de la explicabilidad. Riesgos de automatizar decisiones sin entendimiento
+                                    del modelo. Modelos como apoyo a la decisión, no como sustituto del criterio humano.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- Sección de Docentes -->
+        <section class="docentes-section">
+            <div class="container">
+                <h2 class="section-title">Equipo Docente</h2>
+                <p class="section-subtitle">Profesionales con amplia experiencia en ciencia de datos y analítica</p>
+
+                <div class="docentes-grid">
+                    <div class="docente-card">
+                        <img src="alex-mauricio.png" alt="Alex Mauricio Rodriguez" class="docente-photo">
+                        <h3 class="docente-name">Alex Mauricio Rodriguez</h3>
+                        <p class="docente-title">M.Sc. Economía, Economista</p>
+                        <p class="docente-bio">
+                            Economista con maestría en Administración y científico de datos, con trayectoria que integra
+                            análisis avanzado, tecnología y toma de decisiones estratégicas. Se desempeñó como
+                            científico de datos en el IGAC, donde participó en proyectos de analítica aplicada,
+                            modelación estadística y uso de inteligencia artificial para resolver problemas de análisis
+                            geoespaciales.
+                            <br><br>
+                        </p>
+                        <span class="docente-role">🎯 Docente Principal</span>
+                    </div>
+
+                    <div class="docente-card">
+                        <img src="andres-felipe.jpg" alt="Andrés Felipe Flórez" class="docente-photo">
+                        <h3 class="docente-name">Andrés Felipe Flórez</h3>
+                        <p class="docente-title">M.Sc. Inteligencia Artificial, Físico</p>
+                        <p class="docente-bio">
+                            Mágister en Inteligencia Artificial y físico de profesión, cuenta con un posgrado en Cloud
+                            Computing de la UTexas at Austin y certificado profesional en Ciencia de Datos y Machine
+                            Learning del MIT. Ha trabajado en diversos sectores bajo un enfoque de ciencia de datos
+                            aplicada e inteligencia artificial, desarrollando aplicaciones y herramientas para resolver
+                            problemas
+                            complejos.
+                            <br><br>
+
+                        </p>
+                        <span class="docente-role">📚 Coordinador y Docente</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Logos -->
+        <section class="logos-section">
+            <div class="container">
+                <div class="logos-grid">
+                    <img src="logo-cenes.png" alt="CENES" class="logo-img">
+                    <img src="logo-fcea.jpg" alt="FCEA UPTC" class="logo-img">
+                    <img src="logo-uptc.jpg" alt="UPTC" class="logo-img">
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>👨‍🏫 Coordinación</h3>
+                    <p>M.Sc. Andrés Felipe Flórez</p>
+                </div>
+                <div class="footer-section">
+                    <h3>👥 Docentes</h3>
+                    <p>M.Sc. Economía, Economista, Alex Mauricio Rodriguez</p>
+                    <p>M.Sc. Inteligencia Artificial, Físico, Andrés Felipe Flórez</p>
+                </div>
+                <div class="footer-section">
+                    <h3>📊 Duración Total</h3>
+                    <p>120 horas académicas</p>
+                    <p>4 módulos especializados</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function toggleDetails(id, button) {
+            const content = document.getElementById(id);
+            const isActive = content.classList.contains('show');
+            if (isActive) {
+                content.classList.remove('show');
+                button.classList.remove('active');
+            } else {
+                content.classList.add('show');
+                button.classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>
