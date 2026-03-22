@@ -14,16 +14,49 @@
 </head>
 
 <body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">Diplomado en Ciencia de Datos</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#modulos">Módulos</a></li>
+                <li><a href="#docentes">Docentes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#hero" class="nav-cta">Inscríbete</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <header class="hero">
+        <header class="hero" id="hero">
             <div class="hero-badge">Formación Profesional</div>
             <h1>Diplomado en Ciencia de Datos</h1>
             <p class="hero-subtitle">Desarrolla competencias técnicas y estratégicas para transformar datos en
                 decisiones de impacto organizacional</p>
-            <div class="hero-date">📅 Apertura de inscripciones: 26 de enero de 2026</div>
+            <div class="hero-dates">
+                <div class="hero-date">📅 Inicio de cohorte: 22 de junio de 2026</div>
+                <div class="hero-date hero-date-deadline">🕐 Inscripciones abiertas hasta: 19 de junio de 2026</div>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">120</span>
+                    <span class="hero-stat-label">Horas</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">4</span>
+                    <span class="hero-stat-label">Módulos</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">3</span>
+                    <span class="hero-stat-label">Docentes</span>
+                </div>
+            </div>
+            <a href="#modulos" class="hero-cta">Conoce el programa</a>
         </header>
 
-        <main class="modules">
+        <main class="modules" id="modulos">
             <!-- Módulo 1 -->
             <article class="module-card">
                 <div class="module-header">
@@ -653,7 +686,7 @@
         </main>
 
         <!-- Sección de Docentes -->
-        <section class="docentes-section">
+        <section class="docentes-section" id="docentes">
             <div class="container">
                 <h2 class="section-title">Equipo Docente</h2>
                 <p class="section-subtitle">Profesionales con amplia experiencia en ciencia de datos y analítica</p>
@@ -719,26 +752,32 @@
             </div>
         </section>
 
-        <footer class="footer">
+        <footer class="footer" id="contacto">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>👨‍🏫 Coordinación</h3>
+                    <h3>Coordinación</h3>
                     <p>M.Sc. Andrés Felipe Flórez Olivera</p>
                 </div>
                 <div class="footer-section">
-                    <h3>👥 Docentes</h3>
-                    <p>M.Sc. Economía, Economista, Alex Mauricio Rodriguez</p>
-                    <p>M.Sc. Inteligencia Artificial, Físico, Andrés Felipe Flórez Olivera</p>
-                    <p>M.Sc. Economía, Economista, Juan Felipe Contreras</p>
+                    <h3>Equipo Docente</h3>
+                    <p>Alex Mauricio Rodriguez — M.Sc. Economía</p>
+                    <p>Andrés Felipe Flórez Olivera — M.Sc. Inteligencia Artificial</p>
+                    <p>Juan Felipe Contreras — M.Sc. Economía</p>
                 </div>
                 <div class="footer-section">
-                    <h3>📊 Duración Total</h3>
+                    <h3>Programa</h3>
                     <p>120 horas académicas</p>
                     <p>4 módulos especializados</p>
+                    <p>Inicio: 22 de junio de 2026</p>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Diplomado en Ciencia de Datos — UPTC — 2026</p>
             </div>
         </footer>
     </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">↑</button>
 
     <script src="js/main.js"></script>
 </body>
